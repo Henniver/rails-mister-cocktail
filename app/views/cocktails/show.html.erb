@@ -1,0 +1,7 @@
+<div class="container mt-3">
+  <h1><%= @cocktail.name %></h1>
+  <% @cocktail.ingredients.each do |ingredient| %>
+    <p><%= "#{ingredient.name}: dose" %></p>
+  <% end %>
+  <%= link_to  "Back", cocktails_path %>
+</div>

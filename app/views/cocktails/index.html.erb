@@ -1,0 +1,10 @@
+<div class="container mt-3">
+  <h1>Cocktails List</h1>
+  <% @cocktails.each do |c|%>
+    <div class="card">
+      <p><%= c.name %></p>
+      <%= link_to  "Show", cocktail_path(c) %>
+    </div>
+  <% end %>
+</div>
+
