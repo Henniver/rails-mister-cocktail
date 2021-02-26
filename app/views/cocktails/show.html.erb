@@ -1,11 +1,19 @@
 <div class="container mt-3 p-2">
   <div class="card p-3">
     <h1><%= @cocktail.name %></h1>
+    <h4>Ingredients</h4>
     <% @cocktail.doses.each do |dose| %>
       <p><%= "#{dose.ingredient.name}: #{dose.description}" %> - 
       <%= link_to "X", dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %></p>
     <% end %>
-    <%= link_to "Add an ingredient", new_cocktail_dose_path(@cocktail) %>
+  </div>
+  <div class="card mt-3 p-3">
+    <h4>Add a new ingredient!</h4>
+    <%= simple_form_for [@cocktail, @dose] do |f| %>
+      <%= f.association :ingredient %>
+      <%= f.input :description %> 
+      <%= f.submit 'Add ingredient', class: "btn btn-success btn-block" %>
+    <% end %>
   </div>
   <%= link_to  "Back", cocktails_path %>
 </div>

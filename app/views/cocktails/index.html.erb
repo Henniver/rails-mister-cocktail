@@ -1,5 +1,10 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_url('aston_martin.jpg') %>);">
+  <div class="container">
+    <h1>Shaken, not stirred</h1>
+    <p>Set up your own cocktail bar for a classy evening</p>
+  </div>
+</div>
 <div class="container mt-3">
-  <h1>Cocktails List</h1>
   <% @cocktails.each do |c|%>
     <div class="card">
       <p><%= c.name %></p>
