@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   # A user can add a new dose (ingredient/description pair) to an existing cocktail x
   # A user can delete a dose that belongs to an existing cocktail. How can we make a delete link again? x
 
-  resources :cocktails, only: [:index, :new, :create, :show] do
+  root to: 'cocktails#index'
+  resources :cocktails, only: [:new, :create, :show] do
     resources :doses, only: :create
   end
   resources :doses, only: :destroy
