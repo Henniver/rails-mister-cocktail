@@ -1,19 +1,27 @@
 <div class="container mt-3 p-2">
-  <div class="card p-3">
-    <h1><%= @cocktail.name %></h1>
-    <h4>Ingredients</h4>
-    <% @cocktail.doses.each do |dose| %>
-      <p><%= "#{dose.ingredient.name}: #{dose.description}" %> - 
-      <%= link_to "X", dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %></p>
-    <% end %>
+  <div class="card-product">
+    <% split = @cocktail.name.split %>
+    <% last = split.pop %>
+    <% split_ = split.map { |word| "#{word}_"} %>
+    <% image_tag = split_.join << last %>
+    <% image_tag.downcase! %>
+    <%= image_tag "#{image_tag}", alt: "#{@cocktail.name}" %>
+    <div class="card-product-infos">
+      <h1><%= @cocktail.name %></h1>
+      <h2>Ingredients</h2>
+      <% @cocktail.doses.each do |dose| %>
+        <p><%= "#{dose.ingredient.name}: #{dose.description}" %> - 
+        <%= link_to "X", dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %></p>
+      <% end %>
+    </div>
   </div>
-  <div class="card mt-3 p-3">
-    <h4>Add a new ingredient!</h4>
+  <div class="container-new-ingredient" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_url("tuxedo") %>);">
+    <h4>Add a new ingredient</h4>
     <%= simple_form_for [@cocktail, @dose] do |f| %>
       <%= f.association :ingredient %>
       <%= f.input :description %> 
-      <%= f.submit 'Add ingredient', class: "btn btn-success btn-block" %>
+      <%= f.submit 'Add ingredient', class: "btn btn-primary" %>
     <% end %>
   </div>
-  <%= link_to  "Back", root_path %>
+  <%= link_to  "Back", root_path, class: "btn btn-primary" %>
 </div>

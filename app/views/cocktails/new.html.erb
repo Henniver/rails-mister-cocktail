@@ -1,5 +1,7 @@
-<div class="container mt-5">
-  <h3>Add a new cocktail</h3>
-  <%= render 'form', cocktail: @cocktail %>
-  <%= link_to  "Back", root_path %>
+<div class="container-new-cocktail" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_url('tuxedo.jpg') %>);">
+    <div class="form mb-3">
+      <h3>Add a new cocktail</h3>
+      <%= render 'form', cocktail: @cocktail %>
+    </div>
+    <%= link_to  "Back", root_path, class: "btn btn-primary back" %>
 </div>

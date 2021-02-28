@@ -1,0 +1,40 @@
+.container-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container-new-cocktail {
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 40px 40px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  form {
+   width: 300px; 
+  }
+  h3, label {
+    color: lightgrey;
+  }
+  .btn.btn-primary.back{
+    width: fit-content;
+  }
+}
+.container-new-ingredient {
+  margin: 10px 0;
+  padding: 10px 40px;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  color: $light-gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  form {
+    width: 300px;
+  }
+}

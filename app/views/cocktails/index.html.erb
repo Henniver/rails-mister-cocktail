@@ -1,16 +1,22 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_url('aston_martin.jpg') %>);">
   <div class="container">
     <h1>Shaken, not stirred</h1>
-    <p>Set up your own cocktail bar for a classy evening</p>
+    <p>Your cocktail configurator for a classy evening</p>
   </div>
 </div>
-<div class="container mt-3">
-  <% @cocktails.each do |c|%>
-    <div class="card">
-      <p><%= c.name %></p>
-      <%= link_to  "Show", cocktail_path(c) %>
-    </div>
-  <% end %>
-  <%= link_to "Add new cocktail", new_cocktail_path %>
+<div class="container-body my-3">
+  <div class="cards">
+    <% @cocktails.each do |c|%>
+      <% split = c.name.split %>
+      <% last = split.pop %>
+      <% split_ = split.map { |word| "#{word}_"} %>
+      <% image_tag = split_.join << last %>
+      <% image_tag.downcase! %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_url("#{image_tag}") %>);">
+        <p><%= link_to  "#{c.name}", cocktail_path(c) %></p>
+      </div>
+    <% end %>
+  </div>
+    <%= link_to "Add new cocktail", new_cocktail_path, class: "btn btn-primary" %>
 </div>
 
